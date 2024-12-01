@@ -1,6 +1,6 @@
 ﻿namespace CardapioDigital.Domain.Interface;
 
-public interface IGenericoRepositorio<T>
+internal interface IGenericoRepositorio<T>
 {
     Task<IEnumerable<T>> GetAll();
     Task<T> GetById(int id);

@@ -6,7 +6,7 @@ using CardapioDigital.Domain.Interface;
 using CardapioDigital.Domain.Models;
 
 namespace CardapioDigital.Application.Services;
-public class CategoriaService(IGenericoRepositorio<Categoria> _categoriaRepository, IMapper _mapper)
+internal class CategoriaService(IGenericoRepositorio<Categoria> _categoriaRepository, IMapper _mapper)
                : IGenericoServices<CategoriaRequestDto, CategoriaResponseDto>
 {
     public async Task<CategoriaResponseDto> Create(CategoriaRequestDto entity)

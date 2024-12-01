@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace CardapioDigital.Application.Dto.Request;
 
-public class CategoriaRequestDto
+internal class CategoriaRequestDto
 {
     [JsonPropertyName("nomeCategoria")]
     [Required(ErrorMessage = "O nome da categoria é obrigatório.")]

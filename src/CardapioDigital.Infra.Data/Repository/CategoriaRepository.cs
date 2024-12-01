@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CardapioDigital.Infra.Data.Repository;
 
-public class CategoriaRepository(CardapioDbContext context) : IGenericoRepositorio<Categoria>
+internal class CategoriaRepository(CardapioDbContext context) : IGenericoRepositorio<Categoria>
 {
     public async Task<Categoria> Create(Categoria entity)
     {

@@ -5,7 +5,7 @@ using CardapioDigital.Domain.Models;
 
 namespace CardapioDigital.Application.Mappings;
 
-public class MapConfig : Profile
+internal class MapConfig : Profile
 {
     public MapConfig()
     {

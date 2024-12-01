@@ -2,7 +2,7 @@
 
 namespace CardapioDigital.Application.Dto.Response;
 
-public class CategoriaResponseDto
+internal class CategoriaResponseDto
 {
     [JsonPropertyName("idCategoria")]
     public int IdCategoria { get; init; }

@@ -10,7 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace CardapioDigital.Infra.IoC;
 
-public static class IoC
+internal static class IoC
 {
     public static IServiceCollection AddInfrastructure(this IServiceCollection services)
     {

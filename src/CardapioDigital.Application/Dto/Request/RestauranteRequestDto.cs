@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace CardapioDigital.Application.Dto.Request;
 
-public class RestauranteRequestDto
+internal class RestauranteRequestDto
 {
     [JsonPropertyName("nomeRestaurante")]
     [Required(ErrorMessage = "O nome do restaurante é obrigatório.")]

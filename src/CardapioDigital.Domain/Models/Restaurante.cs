@@ -1,6 +1,6 @@
 ﻿namespace CardapioDigital.Domain.Models;
 
-public sealed class Restaurante
+internal sealed class Restaurante
 {
     public Restaurante(string nomeRestaurante, string imagemRestaturanteUrl)
     {

@@ -1,6 +1,6 @@
 ﻿namespace CardapioDigital.Domain.Models;
 
-public sealed class Produto
+internal sealed class Produto
 {
     public Produto(string nomeProduto, string descricaoProduto, string produtoImagemUrl, string isPublico, decimal preco, decimal? precoComDesconto, int categoriaId)
     {

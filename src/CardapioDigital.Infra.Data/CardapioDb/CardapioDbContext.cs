@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CardapioDigital.Infra.Data.CardapioDb;
 
-public class CardapioDbContext(DbContextOptions<CardapioDbContext> options) : DbContext(options)
+internal class CardapioDbContext(DbContextOptions<CardapioDbContext> options) : DbContext(options)
 {
     public DbSet<Categoria> Categorias { get; set; }
     public DbSet<Produto> Produtos { get; set; }

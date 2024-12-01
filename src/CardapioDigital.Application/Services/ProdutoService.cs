@@ -7,7 +7,7 @@ using CardapioDigital.Domain.Models;
 
 namespace CardapioDigital.Application.Services;
 
-public class ProdutoService(IGenericoRepositorio<Produto> _produtoRepository, IMapper _mapper)
+internal class ProdutoService(IGenericoRepositorio<Produto> _produtoRepository, IMapper _mapper)
                : IGenericoServices<ProdutoRequestDto, ProdutoResponseDto>
 {
     public async Task<ProdutoResponseDto> Create(ProdutoRequestDto entity)
