@@ -1,5 +1,29 @@
-﻿namespace CardapioDigital.Infra.IoC;
+﻿using CardapioDigital.Application.Dto.Request;
+using CardapioDigital.Application.Dto.Response;
+using CardapioDigital.Application.Mappings;
+using CardapioDigital.Application.Services;
+using CardapioDigital.Application.Services.IServices;
+using CardapioDigital.Domain.Interface;
+using CardapioDigital.Domain.Models;
+using CardapioDigital.Infra.Data.Repository;
+using Microsoft.Extensions.DependencyInjection;
 
-internal class IoC
+namespace CardapioDigital.Infra.IoC;
+
+public static class IoC
 {
+    public static IServiceCollection AddInfrastructure(this IServiceCollection services)
+    {
+        services.AddScoped<IGenericoServices<CategoriaRequestDto, CategoriaResponseDto>, CategoriaService>();
+        services.AddScoped<IGenericoServices<ProdutoRequestDto, ProdutoResponseDto>, ProdutoService>();
+        services.AddScoped<IGenericoServices<RestauranteRequestDto, RestauranteResponseDto>, RestauranteService>();
+
+        services.AddScoped<IGenericoRepositorio<Categoria>, CategoriaRepository>();
+        services.AddScoped<IGenericoRepositorio<Produto>, ProdutoRepository>();
+        services.AddScoped<IGenericoRepositorio<Restaurante>, RestauranteRepository>();
+
+        services.AddAutoMapper(typeof(MapConfig));
+
+        return services;
+    }
 }
