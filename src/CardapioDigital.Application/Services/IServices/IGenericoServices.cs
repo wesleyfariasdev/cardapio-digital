@@ -1,10 +1,10 @@
 ﻿namespace CardapioDigital.Application.Services.IServices;
 
-public interface IGenericoServices<T>
+public interface IGenericoServices<TResquest, TResponse>
 {
-    Task<IEnumerable<T>> GetAll();
-    Task<T> GetById(int id);
-    Task<T> Update(T entity);
-    Task<T> Create(T entity);
+    Task<IEnumerable<TResponse>> GetAll();
+    Task<TResponse> GetById(int id);
+    Task<TResponse> Update(TResquest entity);
+    Task<TResponse> Create(TResquest entity);
     Task<bool> DeleteById(int id);
 }
