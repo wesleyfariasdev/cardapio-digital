@@ -1,33 +1,68 @@
 ﻿using CardapioDigital.Domain.Interface;
 using CardapioDigital.Domain.Models;
 using CardapioDigital.Infra.Data.CardapioDb;
+using Microsoft.EntityFrameworkCore;
 
 namespace CardapioDigital.Infra.Data.Repository;
 
-internal class ProdutoRepository(CardapioDbContext context) : IGenericoRepositorio<Produto>
+public class ProdutoRepository(CardapioDbContext context) : IGenericoRepositorio<Produto>
 {
-    public Task<Produto> Create(Produto entity)
+    public async Task<Produto> Create(Produto entity)
     {
-        throw new NotImplementedException();
+        if (entity != null)
+        {
+            var produto = await context.Produtos.AddAsync(entity);
+            await context.SaveChangesAsync();
+            return produto.Entity;
+        }
+
+        throw new Exception("Não foi possível atualizar o restaurante.");
     }
 
-    public Task<bool> DeleteById(int id)
+    public async Task<bool> DeleteById(int id)
     {
-        throw new NotImplementedException();
+        var produto = await context.Produtos.FindAsync(id);
+        if (produto != null)
+        {
+            try
+            {
+                context.Produtos.Remove(produto);
+                return await context.SaveChangesAsync() > 0;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        return false;
+
     }
 
-    public Task<IEnumerable<Produto>> GetAll()
+    public async Task<IEnumerable<Produto>> GetAll()
     {
-        throw new NotImplementedException();
+        return await context.Produtos.ToListAsync();
     }
 
-    public Task<Produto> GetById(int id)
+    public async Task<Produto> GetById(int id)
     {
-        throw new NotImplementedException();
+        var produto = await context.Produtos.SingleOrDefaultAsync(x => x.IdProduto == id);
+        if (produto == null)
+            throw new Exception($"O {id} não foi encotrado.");
+
+        return produto;
     }
 
-    public Task<Produto> Update(Produto entity)
+    public async Task<Produto> Update(Produto entity)
     {
-        throw new NotImplementedException();
+        if (entity != null)
+        {
+            var produto = context.Produtos.Update(entity);
+            await context.SaveChangesAsync();
+            return produto.Entity;
+        }
+
+        throw new Exception("Não foi possível atualizar o restaurante.");
+
     }
 }
