@@ -39,10 +39,9 @@ internal class ProdutoRepository(CardapioDbContext context) : IGenericoRepositor
 
     }
 
-    public async Task<IEnumerable<Produto>> GetAll()
-    {
-        return await context.Produtos.ToListAsync();
-    }
+    public async Task<IEnumerable<Produto>> GetAll() =>    
+           await context.Produtos.ToListAsync();
+    
 
     public async Task<Produto> GetById(int id)
     {

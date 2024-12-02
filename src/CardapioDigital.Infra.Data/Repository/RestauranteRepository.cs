@@ -39,10 +39,8 @@ internal class RestauranteRepository(CardapioDbContext context) : IGenericoRepos
 
     }
 
-    public async Task<IEnumerable<Restaurante>> GetAll()
-    {
-        return await context.Restaurantes.ToListAsync();
-    }
+    public async Task<IEnumerable<Restaurante>> GetAll() =>    
+           await context.Restaurantes.ToListAsync();    
 
     public async Task<Restaurante> GetById(int id)
     {

@@ -39,10 +39,9 @@ internal class CategoriaRepository(CardapioDbContext context) : IGenericoReposit
 
     }
 
-    public async Task<IEnumerable<Categoria>> GetAll()
-    {
-        return await context.Categorias.ToListAsync();
-    }
+    public async Task<IEnumerable<Categoria>> GetAll() =>    
+           await context.Categorias.ToListAsync();
+    
 
     public async Task<Categoria> GetById(int id)
     {
