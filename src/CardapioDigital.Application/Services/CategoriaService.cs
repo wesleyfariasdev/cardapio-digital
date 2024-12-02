@@ -16,10 +16,8 @@ internal class CategoriaService(IGenericoRepositorio<Categoria> _categoriaReposi
         return _mapper.Map<CategoriaResponseDto>(produto);
     }
 
-    public Task<bool> DeleteById(int id)
-    {
-        return _categoriaRepository.DeleteById(id);
-    }
+    public async Task<bool> DeleteById(int id) =>    
+           await _categoriaRepository.DeleteById(id);    
 
     public async Task<IEnumerable<CategoriaResponseDto>> GetAll()
     {

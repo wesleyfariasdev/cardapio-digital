@@ -17,10 +17,8 @@ internal class RestauranteService(IGenericoRepositorio<Restaurante> _restaurante
         return _mapper.Map<RestauranteResponseDto>(restaurante);
     }
 
-    public Task<bool> DeleteById(int id)
-    {
-        return _restauranteRepository.DeleteById(id);
-    }
+    public async Task<bool> DeleteById(int id) =>
+           await _restauranteRepository.DeleteById(id);
 
     public async Task<IEnumerable<RestauranteResponseDto>> GetAll()
     {

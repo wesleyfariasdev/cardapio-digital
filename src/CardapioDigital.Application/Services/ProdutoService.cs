@@ -17,10 +17,9 @@ internal class ProdutoService(IGenericoRepositorio<Produto> _produtoRepository, 
         return _mapper.Map<ProdutoResponseDto>(produto);
     }
 
-    public Task<bool> DeleteById(int id)
-    {
-        return _produtoRepository.DeleteById(id);
-    }
+    public async Task<bool> DeleteById(int id) =>    
+           await _produtoRepository.DeleteById(id);
+    
 
     public async Task<IEnumerable<ProdutoResponseDto>> GetAll()
     {
