@@ -17,10 +17,12 @@ internal static class IoC
         services.AddScoped<IGenericoServices<CategoriaRequestDto, CategoriaResponseDto>, CategoriaService>();
         services.AddScoped<IGenericoServices<ProdutoRequestDto, ProdutoResponseDto>, ProdutoService>();
         services.AddScoped<IGenericoServices<RestauranteRequestDto, RestauranteResponseDto>, RestauranteService>();
+        services.AddScoped<IProdutoService, ProdutoService>();
 
         services.AddScoped<IGenericoRepositorio<Categoria>, CategoriaRepository>();
         services.AddScoped<IGenericoRepositorio<Produto>, ProdutoRepository>();
         services.AddScoped<IGenericoRepositorio<Restaurante>, RestauranteRepository>();
+        services.AddScoped<IProdutoRepository, ProdutoRepository>();
 
         services.AddAutoMapper(typeof(MapConfig));
 
