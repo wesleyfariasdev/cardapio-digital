@@ -6,7 +6,7 @@ internal sealed class Produto
 {
     private Produto()
     {
-        
+
     }
 
     public Produto(string nomeProduto, string descricaoProduto, string produtoImagemUrl, string isPublico, decimal preco, decimal? precoComDesconto, int categoriaId)

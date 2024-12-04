@@ -6,7 +6,7 @@ internal sealed class Categoria
 {
     private Categoria()
     {
-        
+
     }
 
     public Categoria(string nomeCategoria, string imagemUrl, bool isPublico, int restauranteId)

@@ -1,5 +1,5 @@
-using Microsoft.AspNetCore.Identity;
 using CardapioDigital.Web.Data;
+using Microsoft.AspNetCore.Identity;
 
 namespace CardapioDigital.Web.Components.Account;
 
