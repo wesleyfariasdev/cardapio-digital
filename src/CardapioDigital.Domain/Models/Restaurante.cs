@@ -15,10 +15,10 @@ internal sealed class Restaurante
         ImagemRestaturanteUrl = imagemRestaturanteUrl;
     }
 
-    [Key]
     public int IdRestaurante { get; set; }
     public string NomeRestaurante { get; set; }
     public string ImagemRestaturanteUrl { get; set; }
 
     public IEnumerable<Produto> Produtos { get; set; }
+    public IEnumerable<Categoria> Categorias { get; set; }
 }

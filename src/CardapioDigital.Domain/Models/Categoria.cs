@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace CardapioDigital.Domain.Models;
+﻿namespace CardapioDigital.Domain.Models;
 
 internal sealed class Categoria
 {
@@ -17,7 +15,6 @@ internal sealed class Categoria
         RestauranteId = restauranteId;
     }
 
-    [Key]
     public int IdCategoria { get; set; }
     public string NomeCategoria { get; set; }
     public string CategoriaImagemUrl { get; set; }
@@ -25,4 +22,6 @@ internal sealed class Categoria
 
     public Restaurante Restaurante { get; set; }
     public int RestauranteId { get; set; }
+
+    public IEnumerable<Produto> Produtos { get; set; }
 }
