@@ -20,8 +20,8 @@ internal sealed class Categoria
     public string CategoriaImagemUrl { get; set; }
     public bool IsPublico { get; set; }
 
-    public Restaurante Restaurante { get; set; }
     public int RestauranteId { get; set; }
+    public Restaurante Restaurante { get; set; }
 
     public IEnumerable<Produto> Produtos { get; set; }
 }

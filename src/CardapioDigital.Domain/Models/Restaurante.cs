@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace CardapioDigital.Domain.Models;
+﻿namespace CardapioDigital.Domain.Models;
 
 internal sealed class Restaurante
 {
