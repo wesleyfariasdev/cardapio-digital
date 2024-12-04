@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CardapioDigital.Infra.Data.Repository;
 
-internal class ProdutoRepository(CardapioDbContext context) : IGenericoRepositorio<Produto>
+internal class ProdutoRepository(CardapioDbContext context) : IGenericoRepositorio<Produto>, IProdutoRepository
 {
     public async Task<Produto> Create(Produto entity)
     {
@@ -50,6 +50,12 @@ internal class ProdutoRepository(CardapioDbContext context) : IGenericoRepositor
             throw new Exception($"O {id} não foi encotrado.");
 
         return produto;
+    }
+
+    public async Task<IEnumerable<Produto>> GetProdutosById(int idRestaurante)
+    {
+        var produtos = await context.Produtos.Where(x => x.RestauranteId == idRestaurante).ToListAsync();
+        return produtos;
     }
 
     public async Task<Produto> Update(Produto entity)
