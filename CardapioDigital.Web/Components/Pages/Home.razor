@@ -1,5 +1,81 @@
 ﻿@page "/"
 
+@using CardapioDigital.Application.Dto.Request
+@using CardapioDigital.Application.Dto.Response
+@using CardapioDigital.Application.Services.IServices
+
+@inject IGenericoServices<RestauranteRequestDto, RestauranteResponseDto> RestauranteServices
+
+
 <PageTitle>Home</PageTitle>
 
-<h1><a href="/restaurante/nomeRestaurante">Restaurante</a></h1>
+<section>
+    <div class="container py-5">
+        @foreach (var restaurante in restaurantes)
+        {
+            <div class="row justify-content-center mb-3">
+                <div class="col-md-12 col-xl-10">
+                    <div class="card shadow-0 border rounded-3">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
+                                    <div class="bg-image hover-zoom ripple rounded ripple-surface">
+                                        <img src="@restaurante.ImagemRestaturanteUrl"
+                                             class="w-100" alt="Imagem do Restaurante" />
+                                        <a href="#!">
+                                            <div class="hover-overlay">
+                                                <div class="mask" style="background-color: rgba(253, 253, 253, 0.15);"></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-6 col-xl-6">
+                                    <h5>@restaurante.NomeRestaurante</h5>
+                                    <div class="d-flex flex-row">
+                                        <div class="text-warning mb-1 me-2">
+                                            @*                <i class="fa fa-star"></i> *@
+                                            <i class="fa fa-star-o"></i>
+                                        </div>
+                                        <span>0 avaliações</span>
+                                    </div>
+                                    <div class="mt-1 mb-0 text-muted small">
+                                        <span>Cozinha: Traducional</span>
+                                    </div>
+                                    <div class="mb-2 text-muted small">
+                                        <span>Localização: Endereco</span>
+                                        <span class="text-primary"> • </span>
+                                        <span>Aberto: 18:00 ás 22:00</span>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start">
+                                    <div class="d-flex flex-row align-items-center mb-1">
+                                        <h6 class="mb-1">Faixa de Preço</h6>
+                                        <span class="text-muted">R$10,00 - R$ 50,00</span>
+                                    </div>
+                                    <h6 class="text-success">Somente retirada</h6>
+                                    <div class="d-flex flex-column mt-4">
+                                        <a class="btn btn-primary btn-sm" href="/restaurante/@restaurante.IdRestaurante">Ver Detalhes</a>
+                                        <button class="btn btn-outline-primary btn-sm mt-2" type="button">
+                                            Adicionar aos Favoritos
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>
+
+
+@code {
+    private IEnumerable<RestauranteResponseDto> restaurantes = new List<RestauranteResponseDto>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        restaurantes = await RestauranteServices.GetAll();
+    }
+}
