@@ -5,12 +5,34 @@
 @using CardapioDigital.Application.Services.IServices
 
 @inject IGenericoServices<RestauranteRequestDto, RestauranteResponseDto> RestauranteServices
+@inject IGenericoServices<CategoriaRequestDto, CategoriaResponseDto> CategoriaServices
 
 
 <PageTitle>Home</PageTitle>
 
+<HomeCategorias Categorias="@categorias" />
+
+<div class="container py-5">
+    <div class="p-5 text-center bg-warning rounded-3 shadow-sm">
+        <h1 class="text-body-emphasis">Aproveite Nossas Ofertas Exclusivas</h1>
+        <p class="col-lg-8 mx-auto fs-5 text-dark">
+            Cadastre-se agora e ganhe promoções exclusivas para você e seu negócio!
+            Gerencie seu restaurante, aumente sua visibilidade e ofereça o melhor aos seus clientes.
+        </p>
+        <div class="d-inline-flex flex-wrap justify-content-center gap-3 mb-4">
+            <button class="d-inline-flex align-items-center btn btn-dark btn-lg px-4 rounded-pill" type="button">
+                Criar Conta
+            </button>
+            <button class="btn btn-dark btn-lg px-4 rounded-pill" type="button">
+                Login
+            </button>
+        </div>
+    </div>
+</div>
+
 <section>
-    <div class="container py-5">
+    <div class="container py-3">
+        <h2 class="pb-2">Mais populares da região <i class="fa-solid fa-fire"></i></h2>
         @foreach (var restaurante in restaurantes)
         {
             <div class="row justify-content-center mb-3">
@@ -73,9 +95,11 @@
 
 @code {
     private IEnumerable<RestauranteResponseDto> restaurantes = new List<RestauranteResponseDto>();
+    private IEnumerable<CategoriaResponseDto> categorias = new List<CategoriaResponseDto>();
 
     protected override async Task OnInitializedAsync()
     {
         restaurantes = await RestauranteServices.GetAll();
+        categorias = await CategoriaServices.GetAll();
     }
 }
