@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 /CardapioDigital.Web/Data/Migrations
 /src/CardapioDigital.Infra.Data/Migrations
+/.idea/.idea.CardapioDigital/.idea
