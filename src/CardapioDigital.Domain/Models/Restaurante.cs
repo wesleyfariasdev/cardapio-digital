@@ -4,7 +4,6 @@ internal sealed class Restaurante
 {
     private Restaurante()
     {
-
     }
 
     public Restaurante(string nomeRestaurante, string imagemRestaturanteUrl)

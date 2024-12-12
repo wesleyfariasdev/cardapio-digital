@@ -18,13 +18,13 @@ internal class ProdutoEntityConfig : IEntityTypeConfiguration<Produto>
         builder.Property(x => x.PrecoComDesconto);
 
         builder.HasOne(p => p.Restaurante)
-        .WithMany(r => r.Produtos)
-        .HasForeignKey(p => p.RestauranteId)
-        .OnDelete(DeleteBehavior.Restrict);
+            .WithMany(r => r.Produtos)
+            .HasForeignKey(p => p.RestauranteId)
+            .OnDelete(DeleteBehavior.Restrict);
 
         builder.HasOne(p => p.Categoria)
-           .WithMany(c => c.Produtos)
-           .HasForeignKey(p => p.CategoriaId)
-           .OnDelete(DeleteBehavior.Restrict);
+            .WithMany(c => c.Produtos)
+            .HasForeignKey(p => p.CategoriaId)
+            .OnDelete(DeleteBehavior.Restrict);
     }
 }

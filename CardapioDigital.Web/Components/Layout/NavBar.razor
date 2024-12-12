@@ -1,37 +1,63 @@
-﻿  <!-- Navigation-->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+﻿<!-- Navigation -->
+<nav class="navbar navbar-expand-lg text-primary bg-white shadow-sm">
     <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="#!">Cardápio Digital</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <!-- Logo -->
+        <a class="navbar-brand fw-bold" href="/">
+            <i class="fa-solid fa-utensils me-2"></i>Cardápio Digital
+        </a>
+
+        <!-- Toggle Button for Mobile -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navigation Links -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+                <li class="nav-item">
+                    <a class="nav-link active fw-bold text-dark" aria-current="page" href="#!">
+                        <i class="fa-solid fa-house me-1"></i>Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fw-bold text-dark" href="#!">
+                        <i class="fa-solid fa-info-circle me-1"></i>About
+                    </a>
+                </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">All Products</a></li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                        <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
+                    <a class="nav-link dropdown-toggle fw-bold text-dark" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-store me-1"></i>Shop
+                    </a>
+                    <ul class="dropdown-menu shadow-sm" aria-labelledby="navbarDropdown">
+                        <li>
+                            <a class="dropdown-item" href="#!">All Products</a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider"/>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#!">Popular Items</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#!">New Arrivals</a>
+                        </li>
                     </ul>
                 </li>
             </ul>
-            <a class="btn btn-outline-dark me-1" href="/planos">
-                <i class="bi-cart-fill me-1"></i>
-                Planos
-                <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-            </a>
-            <button class="btn btn-outline-dark me-1" type="submit">
-                <i class="bi-cart-fill me-1"></i>
-                Login
-                <span class="badge bg-dark text-white ms-1 rounded-pill">></span>
-            </button>
-            <button class="btn btn-outline-dark me-1" type="submit">
-                <i class="bi-cart-fill me-1"></i>
-                Cadastro
-                <span class="badge bg-dark text-white ms-1 rounded-pill">></span>
-            </button>
+
+            <!-- Action Buttons -->
+            <div class="d-flex">
+                <a class="btn btn-outline-primary me-2" href="/planos">
+                    <i class="fa-solid fa-box-open me-1"></i> Planos
+                    <span class="badge bg-primary text-white ms-1 rounded-pill">0</span>
+                </a>
+                <a class="btn btn-outline-dark me-2" href="/login">
+                    <i class="fa-solid fa-right-to-bracket me-1"></i> Login
+                </a>
+                <a class="btn btn-primary text-white" href="/cadastro">
+                    <i class="fa-solid fa-user-plus me-1"></i> Cadastro
+                </a>
+            </div>
         </div>
     </div>
 </nav>

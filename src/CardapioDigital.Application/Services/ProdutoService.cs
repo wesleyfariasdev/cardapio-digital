@@ -7,8 +7,11 @@ using CardapioDigital.Domain.Models;
 
 namespace CardapioDigital.Application.Services;
 
-internal class ProdutoService(IGenericoRepositorio<Produto> _produtoRepository, IMapper _mapper, IProdutoRepository _produtoEspecifico)
-               : IGenericoServices<ProdutoRequestDto, ProdutoResponseDto>, IProdutoService
+internal class ProdutoService(
+    IGenericoRepositorio<Produto> _produtoRepository,
+    IMapper _mapper,
+    IProdutoRepository _produtoEspecifico)
+    : IGenericoServices<ProdutoRequestDto, ProdutoResponseDto>, IProdutoService
 {
     public async Task<ProdutoResponseDto> Create(ProdutoRequestDto entity)
     {
@@ -17,8 +20,10 @@ internal class ProdutoService(IGenericoRepositorio<Produto> _produtoRepository, 
         return _mapper.Map<ProdutoResponseDto>(produto);
     }
 
-    public async Task<bool> DeleteById(int id) =>
-           await _produtoRepository.DeleteById(id);
+    public async Task<bool> DeleteById(int id)
+    {
+        return await _produtoRepository.DeleteById(id);
+    }
 
 
     public async Task<IEnumerable<ProdutoResponseDto>> GetAll()

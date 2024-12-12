@@ -1,0 +1,73 @@
+﻿<!-- Filtro de Restaurantes -->
+<section class="container my-4">
+    <div class="card shadow-sm border-0">
+        <div class="card-body">
+            <h5 class="fw-bold text-primary mb-3"><i class="fa-solid fa-filter me-2"></i>Filtros</h5>
+            <form id="filterForm" class="row g-3 align-items-center">
+
+                <!-- Restaurantes abertos -->
+                <div class="col-md-4">
+                    <label for="filtroAberto" class="form-label fw-bold">Status</label>
+                    <select id="filtroAberto" class="form-select">
+                        <option value="" selected>Todos</option>
+                        <option value="aberto">Somente abertos</option>
+                        <option value="fechado">Fechados</option>
+                    </select>
+                </div>
+
+                <!-- Tipo de Cozinha -->
+                <div class="col-md-4">
+                    <label for="filtroTipoCozinha" class="form-label fw-bold">Tipo de Cozinha</label>
+                    <select id="filtroTipoCozinha" class="form-select">
+                        <option value="" selected>Todos</option>
+                        <option value="tradicional">Tradicional</option>
+                        <option value="japonesa">Japonesa</option>
+                        <option value="italiana">Italiana</option>
+                        <option value="fast-food">Fast Food</option>
+                    </select>
+                </div>
+
+                <!-- Avaliação -->
+                <div class="col-md-4">
+                    <label for="filtroAvaliacao" class="form-label fw-bold">Avaliação</label>
+                    <select id="filtroAvaliacao" class="form-select">
+                        <option value="" selected>Todos</option>
+                        <option value="5">5 estrelas</option>
+                        <option value="4">4 estrelas ou mais</option>
+                        <option value="3">3 estrelas ou mais</option>
+                    </select>
+                </div>
+
+                <!-- Faixa de Preço -->
+                <div class="col-md-6">
+                    <label for="filtroPreco" class="form-label fw-bold">Faixa de Preço</label>
+                    <div class="d-flex align-items-center">
+                        <input type="number" id="precoMin" class="form-control me-2" placeholder="Min" min="0">
+                        <input type="number" id="precoMax" class="form-control" placeholder="Max" min="0">
+                    </div>
+                </div>
+
+                <!-- Ordenação -->
+                <div class="col-md-6">
+                    <label for="filtroOrdenacao" class="form-label fw-bold">Ordenar Por</label>
+                    <select id="filtroOrdenacao" class="form-select">
+                        <option value="popularidade" selected>Mais populares</option>
+                        <option value="avaliacao">Melhores avaliados</option>
+                        <option value="preco">Preço mais baixo</option>
+                    </select>
+                </div>
+
+                <!-- Botão Aplicar -->
+                <div class="col-12 text-end">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa-solid fa-check me-1"></i> Aplicar Filtros
+                    </button>
+                    <button type="reset" class="btn btn-secondary">
+                        <i class="fa-solid fa-times me-1"></i> Limpar
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</section>

@@ -10,78 +10,58 @@
 
 <PageTitle>Home</PageTitle>
 
-<HomeCategorias Categorias="@categorias" />
-
-<div class="container py-5">
-    <div class="p-5 text-center bg-warning rounded-3 shadow-sm">
-        <h1 class="text-body-emphasis">Aproveite Nossas Ofertas Exclusivas</h1>
-        <p class="col-lg-8 mx-auto fs-5 text-dark">
-            Cadastre-se agora e ganhe promoções exclusivas para você e seu negócio!
-            Gerencie seu restaurante, aumente sua visibilidade e ofereça o melhor aos seus clientes.
-        </p>
-        <div class="d-inline-flex flex-wrap justify-content-center gap-3 mb-4">
-            <button class="d-inline-flex align-items-center btn btn-dark btn-lg px-4 rounded-pill" type="button">
-                Criar Conta
-            </button>
-            <button class="btn btn-dark btn-lg px-4 rounded-pill" type="button">
-                Login
-            </button>
-        </div>
-    </div>
-</div>
+<Filtro/>
 
 <section>
-    <div class="container py-3">
-        <h2 class="pb-2">Mais populares da região <i class="fa-solid fa-fire"></i></h2>
+    <div class="container py-4">
+        <h2 class="pb-3 text-center fw-bold text-primary">Mais populares da região <i class="fa-solid fa-fire text-warning"></i></h2>
         @foreach (var restaurante in restaurantes)
         {
-            <div class="row justify-content-center mb-3">
+            <div class="row justify-content-center mb-4">
                 <div class="col-md-12 col-xl-10">
-                    <div class="card shadow-0 border rounded-3">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
-                                    <div class="bg-image hover-zoom ripple rounded ripple-surface">
-                                        <img src="@restaurante.ImagemRestaturanteUrl"
-                                             class="w-100" alt="Imagem do Restaurante" />
-                                        <a href="#!">
-                                            <div class="hover-overlay">
-                                                <div class="mask" style="background-color: rgba(253, 253, 253, 0.15);"></div>
-                                            </div>
-                                        </a>
-                                    </div>
+                    <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                        <div class="row g-0">
+                            <!-- Imagem do Restaurante -->
+                            <div class="col-md-4">
+                                <div class="position-relative h-100">
+                                    <img src="@restaurante.ImagemRestaturanteUrl"
+                                         class="img-fluid h-100 w-100 object-fit-cover"
+                                         alt="Imagem do Restaurante">
+                                    <span class="badge bg-success position-absolute top-0 start-0 m-2 p-2 rounded-3">Aberto agora</span>
                                 </div>
-                                <div class="col-md-6 col-lg-6 col-xl-6">
-                                    <h5>@restaurante.NomeRestaurante</h5>
-                                    <div class="d-flex flex-row">
-                                        <div class="text-warning mb-1 me-2">
-                                            @*                <i class="fa fa-star"></i> *@
-                                            <i class="fa fa-star-o"></i>
-                                        </div>
-                                        <span>0 avaliações</span>
-                                    </div>
-                                    <div class="mt-1 mb-0 text-muted small">
-                                        <span>Cozinha: Traducional</span>
-                                    </div>
-                                    <div class="mb-2 text-muted small">
-                                        <span>Localização: Endereco</span>
-                                        <span class="text-primary"> • </span>
-                                        <span>Aberto: 18:00 ás 22:00</span>
-                                    </div>
+                            </div>
 
+                            <!-- Detalhes do Restaurante -->
+                            <div class="col-md-5 p-4">
+                                <h5 class="fw-bold">@restaurante.NomeRestaurante</h5>
+                                <div class="d-flex align-items-center mb-2">
+                                    <div class="text-warning me-2">
+                                        @*  @for (var i = 0; i < 5; i++)
+                                        {
+                                            <i class="fa @(i < restaurante.Avaliacao ? "fa-star" : "fa-star-o")"></i>
+                                        } *@
+                                    </div>
+                                    <span class="text-muted small"> avaliações</span>
                                 </div>
-                                <div class="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start">
-                                    <div class="d-flex flex-row align-items-center mb-1">
-                                        <h6 class="mb-1">Faixa de Preço</h6>
-                                        <span class="text-muted">R$10,00 - R$ 50,00</span>
-                                    </div>
-                                    <h6 class="text-success">Somente retirada</h6>
-                                    <div class="d-flex flex-column mt-4">
-                                        <a class="btn btn-primary btn-sm" href="/restaurante/@restaurante.IdRestaurante">Ver Detalhes</a>
-                                        <button class="btn btn-outline-primary btn-sm mt-2" type="button">
-                                            Adicionar aos Favoritos
-                                        </button>
-                                    </div>
+                                <p class="text-muted mb-1"><strong>Cozinha:</strong> Tradicional</p>
+                                <p class="text-muted"><strong>Localização:</strong> Endereço</p>
+                                <p class="text-muted"><strong>Horário:</strong> 18:00 às 22:00</p>
+                            </div>
+
+                            <!-- Ações e Preço -->
+                            <div class="col-md-3 p-4 d-flex flex-column justify-content-between bg-light">
+                                <div>
+                                    <p class="text-muted mb-1">
+                                        <strong>Faixa de Preço:</strong>
+                                    </p>
+                                    <p class="fw-bold text-primary">R$10,00 - R$50,00</p>
+                                </div>
+                                <div>
+                                    <p class="badge bg-warning text-dark mb-2 p-2">Somente retirada</p>
+                                    <a href="/restaurante/@restaurante.IdRestaurante" class="btn btn-primary btn-sm w-100 mb-2">Ver Detalhes</a>
+                                    <button class="btn btn-outline-primary btn-sm w-100" type="button">
+                                        <i class="fa-solid fa-heart me-1"></i> Adicionar aos Favoritos
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -90,8 +70,8 @@
             </div>
         }
     </div>
+    <Pagination/>
 </section>
-
 
 @code {
     private IEnumerable<RestauranteResponseDto> restaurantes = new List<RestauranteResponseDto>();
@@ -102,4 +82,5 @@
         restaurantes = await RestauranteServices.GetAll();
         categorias = await CategoriaServices.GetAll();
     }
+
 }

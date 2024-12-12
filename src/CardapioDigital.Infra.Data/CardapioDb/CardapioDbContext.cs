@@ -11,7 +11,6 @@ internal class CardapioDbContext(DbContextOptions<CardapioDbContext> options) : 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-
         base.OnModelCreating(modelBuilder);
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(CardapioDbContext).Assembly);
     }

@@ -23,7 +23,6 @@ internal class CategoriaRepository(CardapioDbContext context) : IGenericoReposit
     {
         var categoaria = await context.Categorias.FindAsync(id);
         if (categoaria != null)
-        {
             try
             {
                 context.Categorias.Remove(categoaria);
@@ -33,14 +32,14 @@ internal class CategoriaRepository(CardapioDbContext context) : IGenericoReposit
             {
                 throw new Exception(ex.Message);
             }
-        }
 
         return false;
-
     }
 
-    public async Task<IEnumerable<Categoria>> GetAll() =>
-           await context.Categorias.ToListAsync();
+    public async Task<IEnumerable<Categoria>> GetAll()
+    {
+        return await context.Categorias.ToListAsync();
+    }
 
 
     public async Task<Categoria> GetById(int id)
@@ -62,6 +61,5 @@ internal class CategoriaRepository(CardapioDbContext context) : IGenericoReposit
         }
 
         throw new Exception("Não foi possível atualizar o restaurante.");
-
     }
 }

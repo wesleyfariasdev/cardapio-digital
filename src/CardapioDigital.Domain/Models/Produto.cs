@@ -4,10 +4,10 @@ internal sealed class Produto
 {
     private Produto()
     {
-
     }
 
-    public Produto(string nomeProduto, string descricaoProduto, string produtoImagemUrl, bool isPublico, decimal preco, decimal? precoComDesconto, int categoriaId)
+    public Produto(string nomeProduto, string descricaoProduto, string produtoImagemUrl, bool isPublico, decimal preco,
+        decimal? precoComDesconto, int categoriaId)
     {
         NomeProduto = nomeProduto;
         DescricaoProduto = descricaoProduto;

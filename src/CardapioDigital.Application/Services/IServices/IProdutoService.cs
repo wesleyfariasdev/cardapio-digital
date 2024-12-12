@@ -1,9 +1,8 @@
 ﻿using CardapioDigital.Application.Dto.Response;
 
-namespace CardapioDigital.Application.Services.IServices
+namespace CardapioDigital.Application.Services.IServices;
+
+internal interface IProdutoService
 {
-    internal interface IProdutoService
-    {
-        Task<IEnumerable<ProdutoResponseDto>> GetProdutosById(int idRestaurante);
-    }
+    Task<IEnumerable<ProdutoResponseDto>> GetProdutosById(int idRestaurante);
 }

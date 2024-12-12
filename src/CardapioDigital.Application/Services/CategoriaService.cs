@@ -6,8 +6,9 @@ using CardapioDigital.Domain.Interface;
 using CardapioDigital.Domain.Models;
 
 namespace CardapioDigital.Application.Services;
+
 internal class CategoriaService(IGenericoRepositorio<Categoria> _categoriaRepository, IMapper _mapper)
-               : IGenericoServices<CategoriaRequestDto, CategoriaResponseDto>
+    : IGenericoServices<CategoriaRequestDto, CategoriaResponseDto>
 {
     public async Task<CategoriaResponseDto> Create(CategoriaRequestDto entity)
     {
@@ -16,8 +17,10 @@ internal class CategoriaService(IGenericoRepositorio<Categoria> _categoriaReposi
         return _mapper.Map<CategoriaResponseDto>(produto);
     }
 
-    public async Task<bool> DeleteById(int id) =>
-           await _categoriaRepository.DeleteById(id);
+    public async Task<bool> DeleteById(int id)
+    {
+        return await _categoriaRepository.DeleteById(id);
+    }
 
     public async Task<IEnumerable<CategoriaResponseDto>> GetAll()
     {

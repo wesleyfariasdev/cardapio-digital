@@ -15,7 +15,7 @@ internal class CategoriaEntityConfig : IEntityTypeConfiguration<Categoria>
         builder.Property(x => x.IsPublico).HasDefaultValue(true);
 
         builder.HasOne(x => x.Restaurante)
-               .WithMany(x => x.Categorias)
-               .HasForeignKey(x => x.RestauranteId);
+            .WithMany(x => x.Categorias)
+            .HasForeignKey(x => x.RestauranteId);
     }
 }

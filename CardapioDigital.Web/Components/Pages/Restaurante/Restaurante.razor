@@ -9,59 +9,79 @@
 
 <PageTitle>@restaurante.NomeRestaurante</PageTitle>
 
-<Header NomeRestaurante="@restaurante.NomeRestaurante" />
-
-<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-    @foreach (var produto in produtos.OrderByDescending(x => x.PrecoComDesconto))
-    {
-        <div class="col mb-5">
-            <div class="card h-100">
-                <!-- Sale badge-->
-                @if (produto.PrecoComDesconto is not null)
-                {
-                    <div class="badge bg-danger text-white position-absolute" style="top: 0.5rem; right: 0.5rem"><i class="fa-solid fa-fire fa-lg"></i> Promoção</div>
-                }
-                <!-- Product image-->
-                <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                <!-- Product details-->
-                <div class="card-body p-4">
-                    <div class="text-center">
-                        <!-- Product name-->
-                        <h5 class="fw-bolder">@produto.NomeProduto</h5>
-                        <!-- Product reviews-->
-                        <div class="d-flex justify-content-center small text-warning mb-2">
-                            <div class="bi-star-fill"></div>
-                            <div class="bi-star-fill"></div>
-                            <div class="bi-star-fill"></div>
-                            <div class="bi-star-fill"></div>
-                            <div class="bi-star-fill"></div>
+<Header NomeRestaurante="@restaurante.NomeRestaurante"/>
+<div class="container">
+    <Filtro/>
+    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+        @foreach (var produto in produtos.OrderByDescending(x => x.PrecoComDesconto))
+        {
+            <div class="col mb-5">
+                <div class="card h-100 shadow-sm rounded-4 border-0 overflow-hidden">
+                    <!-- Sale badge-->
+                    @if (produto.PrecoComDesconto is not null)
+                    {
+                        <div class="badge bg-danger text-white position-absolute"
+                             style="top: 1rem; right: 1rem; z-index: 10;">
+                            Promoção
                         </div>
-                        <!-- Product price-->
-                        @if (produto.PrecoComDesconto is null)
-                        {
-                            <span class="text-muted">R$ @produto.Preco</span>
-                        }
-                        else
-                        {
-                            <span class="text-muted text-decoration-line-through">R$ @produto.Preco</span>
-                            <h5 class="fw-bolder text-danger">R$ @produto.PrecoComDesconto</h5>
-                        }
+                    }
+                    <!-- Product image-->
+                    <div class="position-relative">
+                        <img class="card-img-top object-fit-cover" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="Imagem do Produto">
+                        <div class="hover-overlay position-absolute top-0 w-100 h-100 d-flex align-items-center justify-content-center"
+                             style="background-color: rgba(0, 0, 0, 0.5); opacity: 0; transition: opacity 0.3s;">
+                            <a href="/restaurante/@restaurante.IdRestaurante/detalhe/@produto.IdProduto" class="btn btn-light btn-sm">
+                                <i class="fa-solid fa-eye me-1"></i> Ver produto
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bold text-dark">@produto.NomeProduto</h5>
+                            <!-- Product reviews-->
+                            <div class="d-flex justify-content-center text-warning small mb-2">
+                                @*  @for (var i = 0; i < 5; i++)
+                            {
+                                <i class="fa @(i < produto.Avaliacao ? "fa-star" : "fa-star-o")"></i>
+                            } *@
+                            </div>
+                            <!-- Product price-->
+                            @if (produto.PrecoComDesconto is null)
+                            {
+                                <span class="text-muted fs-5">R$ @produto.Preco</span>
+                            }
+                            else
+                            {
+                                <div class="text-danger fw-bold">
+                                    <span class="text-muted text-decoration-line-through fs-6">R$ @produto.Preco</span>
+                                    <span class="fs-5 ms-2">R$ @produto.PrecoComDesconto</span>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <!-- Product actions-->
+                    <div class="card-footer p-3 border-top-0 bg-light d-flex justify-content-between align-items-center">
+                        <button class="btn btn-outline-dark btn-sm">
+                            <i class="fa-solid fa-heart me-1"></i> Favoritar
+                        </button>
+                        <a class="btn btn-primary btn-sm" href="/restaurante/@restaurante.IdRestaurante/detalhe/@produto.IdProduto">
+                            <i class="fa-solid fa-cart-shopping me-1"></i> Comprar
+                        </a>
                     </div>
                 </div>
-                <!-- Product actions-->
-                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                    <div class="text-center"><a class="btn btn-dark mt-auto" href="/restaurante/@restaurante.IdRestaurante/detalhe/@produto.IdProduto">Ver produto</a></div>
-                </div>
             </div>
-        </div>
-    }
+        }
+    </div>
+
+    <Pagination/>
 </div>
 
 @code {
-    [Parameter]
-    public int IdRestaurante { get; set; }
+    [Parameter] public int IdRestaurante { get; set; }
 
-    private RestauranteResponseDto restaurante = new RestauranteResponseDto();
+    private RestauranteResponseDto restaurante = new();
     private IEnumerable<ProdutoResponseDto> produtos = new List<ProdutoResponseDto>();
 
     protected override async Task OnInitializedAsync()
@@ -69,4 +89,5 @@
         restaurante = await RestauranteServices.GetById(IdRestaurante);
         produtos = await ProdutoService.GetProdutosById(restaurante.IdRestaurante);
     }
+
 }

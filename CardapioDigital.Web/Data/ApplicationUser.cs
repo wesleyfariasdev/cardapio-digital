@@ -6,4 +6,3 @@ namespace CardapioDigital.Web.Data;
 public class ApplicationUser : IdentityUser
 {
 }
-

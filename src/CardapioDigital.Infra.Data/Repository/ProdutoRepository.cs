@@ -23,7 +23,6 @@ internal class ProdutoRepository(CardapioDbContext context) : IGenericoRepositor
     {
         var produto = await context.Produtos.FindAsync(id);
         if (produto != null)
-        {
             try
             {
                 context.Produtos.Remove(produto);
@@ -33,14 +32,14 @@ internal class ProdutoRepository(CardapioDbContext context) : IGenericoRepositor
             {
                 throw new Exception(ex.Message);
             }
-        }
 
         return false;
-
     }
 
-    public async Task<IEnumerable<Produto>> GetAll() =>
-           await context.Produtos.ToListAsync();
+    public async Task<IEnumerable<Produto>> GetAll()
+    {
+        return await context.Produtos.ToListAsync();
+    }
 
 
     public async Task<Produto> GetById(int id)
@@ -68,6 +67,5 @@ internal class ProdutoRepository(CardapioDbContext context) : IGenericoRepositor
         }
 
         throw new Exception("Não foi possível atualizar o restaurante.");
-
     }
 }
